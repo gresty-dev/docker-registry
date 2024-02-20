@@ -1,7 +1,6 @@
-ARG IMAGE
-ARG IMAGE_VERSION
+ARG FROM_IMAGE
 ARG CA_ROOT
-FROM ${IMAGE}:${IMAGE_VERSION}
+FROM ${FROM_IMAGE}
 RUN apk --no-cache add curl
 COPY ${CA_ROOT} /usr/local/share/ca-certificates
 RUN update-ca-certificates

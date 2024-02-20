@@ -1,5 +1,7 @@
 #!/bin/sh
 . ./env.sh
+FROM_IMAGE=$IMAGE:$IMAGE_VERSION
+BUILT_IMAGE=$REGISTRY/$IMAGE-$SUFFIX:$IMAGE_VERSION
 step ca root $CA_ROOT
-docker build --build-arg IMAGE=$IMAGE --build-arg IMAGE_VERSION=$IMAGE_VERSION --build-arg CA_ROOT=$CA_ROOT -t $REGISTRY/$IMAGE:$IMAGE_VERSION-2tudor .
+docker build --build-arg FROM_IMAGE=$FROM_IMAGE --build-arg CA_ROOT=$CA_ROOT -t $BUILT_IMAGE .
 rm $CA_ROOT
